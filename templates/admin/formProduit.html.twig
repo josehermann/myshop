@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {% if editMode %}
+        Modifier produit
+    {% else %}
+        Ajouter produit
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">
+    {% if editMode %}
+    Modifier un produit
+    {% else %}
+    Ajouter un produit
+    {% endif %}
+    </h1>
+    <div class="container">
+    {{form_start(form ,{
+        attr: {
+            novalidate:'novalidate'
+        }
+    })}}
+
+        {{ form_row(form.titre, {
+            label:'titre',
+            attr:{
+                placeholder:"titre du produit"
+            }
+
+        })}}
+
+        {{form_row(form.description,{
+            label:'description'
+        })}}
+
+        {{form_row(form.couleur) }}
+        {{form_row(form.taille, {
+
+        }) }}
+        {{form_row(form.collection, {
+
+        }) }}
+        {{form_row(form.photo, {
+
+        }) }}
+        {{form_row(form.prix, {
+
+        }) }}
+        {{form_row(form.stock, {
+
+        }) }}
+
+        <button type="submit" class="btn btn-primary" > Envoyer </button>
+
+    {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

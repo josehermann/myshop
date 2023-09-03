@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppController!{% endblock %}
+
+{% block body %}
+<h1 class="text-center">MyShOp</h1>
+<section class="row produits"> #}
+
+{% for produit in produits %}
+    
+    <produit class="col-md-4  mx-auto text-center border border-dark my-3 p-3 mr-1">
+    <h2>{{produit.titre}}</h2>
+
+<div class="card" style="">
+  <img src="{{produit.photo}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class= "card-title"></h5>
+    <p class="card-text">"{{produit.description}}" Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">"{{produit.taille}}" </li>
+    <li class="list-group-item">"{{produit.couleur}}"</li>
+    <li class="list-group-item">"{{produit.collection}}"</li>
+    <li class="list-group-item">"{{produit.prix}}"</li>
+    <li class="list-group-item"> le "{{produit.dateenregistrement|date('d/m/y à H:i:s')}}"</li>
+    
+  </ul>
+  <div class="card-body">
+    <a href="{{ path('cart', {id: produit.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+            </div>
+</div>
+  </div>
+</div>
+</produit>
+
+{% endfor %}
+
+</section>
+
+<div>
+<p>Passez dans notre boutique au: 15 Rue du laos, 75015, Paris, France</p>
+</div>
+{% endblock %}

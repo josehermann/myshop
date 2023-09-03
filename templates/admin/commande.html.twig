@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}backoffice des commandes{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Categorie</th>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Contenu</th>
+                <th>Date</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+                
+                <tr>
+                    <td>{{ commande.id }}</td>
+                    <td>{{ commande.category.title }}</td>
+                    <td>{{ commande.title }}</td>
+                    <td><img src="{{ produit.image }}" alt="" width="50"></td>
+                    <td>{{ commande.content|slice(0, 100) }}</td>
+                    <td>{{ commande.createdAt|date('d/m/Y à H:i:s') }}</td>
+                    <td>
+                        <a href="{{ path('commande_show', {id: commande.id} ) }}" class="text-info">voir</a>
+                        <a href="{{ path("commande_modifier", {id: commande.id}) }}" class="text-warning">modifier</a>
+
+                        <a href="{{ path("admin_produit_delete", {id: commande.id}) }}" class="text-danger">supprimer</a>
+                        
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

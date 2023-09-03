@@ -1,0 +1,48 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits1{% endblock %}
+{% block body %}
+<div class="container mt-5">
+   
+    <a href="{{path('admin_produit_new')}}" class="btn btn-primary">Ajout</a>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                 
+                <th>#</th>
+                <th>titre</th>
+                <th>description</th>
+                <th>Couleur</th>
+                <th>taille</th>
+                <th>collection</th>
+                <th>photo</th>
+                <th>prix</th>
+                <th>stock</th>
+                <th>date d'Enregistremenst</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.titre }}</td>
+                    <td>{{ produit.description }}</td>
+                    <td>{{ produit.couleur }}</td>
+                    <td>{{ produit.taille }}</td>
+                    <td>{{ produit.collection }}</td>
+                    <td><img src="{{ produit.photo }}" alt="" width="50"></td>
+                    <td>{{ produit.prix }}</td>
+                    <td>{{ produit.stock }}</td>
+                    <td>{{ produit.dateenregistrement|date('d/m/Y à H:i:s') }}</td>
+                    
+                    <td>
+                        <a href="{{ path('admin_produit_update', {id: produit.id}) }}"  class="text-warning">Modifier</a>
+                        <a href="{{ path('admin_produit_delete', {id: produit.id}) }}"  class="text-danger">Supprimer</a>
+                    </td>
+                </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
